@@ -6,6 +6,8 @@ public class JavalinApp {
 
     static void main(String[] args) {
         Javalin app = Javalin.create().start(7777);
-        app.get("/hello",(Context ctx) -> ctx.result("hello world"));
+        app.get("/",CakesController::getAllCakes);
+        app.get("/cakes/{special}", CakesController::getSpecialCakes);
+        app.post("/addcake/{added}", CakesController::addCakes);
     }
 }
