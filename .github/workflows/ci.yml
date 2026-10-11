@@ -13,3 +13,10 @@ jobs:
 
       - name: install-java
         uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: test
+        run: mvn test
