@@ -15,7 +15,7 @@ public class PatientApp {
                 now,
                 uuid);
         PatientController controller = new PatientController(patient);
-        controller.sendPayLoad();
+//        controller.sendPayLoad();
 
     }
 }
