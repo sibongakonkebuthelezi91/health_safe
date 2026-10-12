@@ -34,7 +34,19 @@ public class CreatePatientRequest {
         return doctorId;
     }
 
-    public String incomingPayload() {
-        return "";
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
+
+    public void setDoctorId(UUID doctorId) {
+        this.doctorId = doctorId;
     }
 }
