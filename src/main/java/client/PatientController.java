@@ -1,6 +1,12 @@
 package client;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import io.javalin.Javalin;
+
+import java.util.HashMap;
 
 public class PatientController {
     private CreatePatientRequest patientRequest;
@@ -13,10 +19,15 @@ public class PatientController {
 
 
     private String createPayload(){
-        
+        ObjectMapper payload = new ObjectMapper();
+        try{
+        return payload.writeValueAsString(this.patientRequest);
+        } catch (JsonProcessingException e) {
+            return "Can not build patient payload";
+        }
     }
 
     public void sendPayLoad(Javalin app) {
-        app.post("api/v1/patients", ctx -> ctx.bodyAsClass(patientRequest.getClass()));
+//        app.post("api/v1/patients", ctx -> ctx.(patientRequest.getClass()));
     }
 }

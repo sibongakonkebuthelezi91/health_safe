@@ -26,8 +26,8 @@ public class CreatePatientRequest {
         return lastName;
     }
 
-    public LocalDate getDob() {
-        return dob;
+    public String getDob() {
+        return dob.toString();
     }
 
     public UUID getDoctorId() {
