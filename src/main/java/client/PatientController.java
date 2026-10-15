@@ -2,7 +2,7 @@ package client;
 
 import io.javalin.Javalin;
 
-public class PatientController {
+public class                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     PatientController {
     private CreatePatientRequest patientRequest;
 
     public PatientController(CreatePatientRequest patientRequest) {
