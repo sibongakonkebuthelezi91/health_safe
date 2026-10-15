@@ -28,6 +28,6 @@ public class PatientController {
     }
 
     public void sendPayLoad(Javalin app) {
-//        app.post("api/v1/patients", ctx -> ctx.(patientRequest.getClass()));
+//        app.post("/");
     }
 }

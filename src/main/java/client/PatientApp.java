@@ -16,6 +16,7 @@ public class PatientApp {
                 "duma",
                 now,
                 uuid);
+
         Javalin server = Javalin.create().start(8080);
         PatientController controller = new PatientController(patient, server);
         controller.sendPayLoad(server);
