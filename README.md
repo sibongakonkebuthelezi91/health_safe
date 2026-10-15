@@ -16,7 +16,7 @@ sequenceDiagram
     %% Phase B: Event Evaluation & Notification
     JS->>AS: Deliver telemetry JSON Message
     Note over AS: Check BPM vs Cached Baseline
-    
+     
     %% opt Spike Detected (BPM > BaseLine)
     AS->>D: PUSH Alert Event (SSE Stream)
     D->>AS: POST  /api/v1/alerts/{id}/acknowledge
