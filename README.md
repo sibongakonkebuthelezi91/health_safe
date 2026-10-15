@@ -22,7 +22,6 @@ sequenceDiagram
     D->>AS: POST  /api/v1/alerts/{id}/acknowledge
     AS-->>D: 200 ok
     
-    
 ```
 
 
