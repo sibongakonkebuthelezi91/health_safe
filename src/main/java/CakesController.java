@@ -25,6 +25,7 @@ public final class CakesController {
         context.status(404).result("No cake found");
     }
 
+
     public static void addCakes(@NotNull Context context) {
         String target = context.pathParam("added").trim();
         if (target.isEmpty())  context.status(400).result("No cake found");
