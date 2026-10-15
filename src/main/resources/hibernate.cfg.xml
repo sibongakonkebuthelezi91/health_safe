@@ -4,19 +4,7 @@
 
 <hibernate-configuration>
 <session-factory>
-    <!--PostgreSQL Driver -->
-    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-
-    <!-- JDBC URL the location of the database    -->
-    <property name="hibernate.connection.url">jdbc:sqlite//localhost:5432/healthsafe</property>
-
-    <!--Authenticating-->
-    <property name="hibernate.connection.username">postgres</property>
-    <property name="hibernate.connection.password">postgres</property>
-    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-    <property name="hibernate.hbm2ddl.auto">update</property>
-
-    <mapping class="client.CreatePatientRequest"></mapping>
-    <mapping class="client.PatientResponse"></mapping>
+    <property name="hibernate.connection.driver_class">org.sqlite.JDBC</property>
+    <property name="hibernate.connection.url">jdbc:sqlite:health.db</property>
 </session-factory>
 </hibernate-configuration>
