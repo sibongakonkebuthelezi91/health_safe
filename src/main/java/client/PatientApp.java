@@ -1,5 +1,7 @@
 package client;
 
+import io.javalin.Javalin;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -14,8 +16,9 @@ public class PatientApp {
                 "duma",
                 now,
                 uuid);
-        PatientController controller = new PatientController(patient);
-//        controller.sendPayLoad();
+        Javalin server = Javalin.create().start(8080);
+        PatientController controller = new PatientController(patient, server);
+        controller.sendPayLoad(server);
 
     }
 }
