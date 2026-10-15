@@ -20,12 +20,14 @@ public class PatientController {
 
 
     public void sendPayLoad(Javalin app) {
-        String json = Payload.createPayload(this.patientRequest);
+
 //        create posts
         app.post("/posts", Payload::post);
+
 //        get posts
         app.get("/posts", Payload::getpost);
-//get individual pst
-        app.get("/posts/{5}", Payload::getpost);
+
+//      get individual post
+        app.get("/post", Payload::getpost);
     }
 }
