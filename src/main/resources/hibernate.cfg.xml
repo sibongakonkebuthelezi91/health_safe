@@ -10,6 +10,7 @@
     <!-- JDBC URL the location of the database    -->
     <property name="hibernate.connection.url">jdbc:sqlite//localhost:5432/healthsafe</property>
 
+    <!--Authenticating-->
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password">postgres</property>
     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
