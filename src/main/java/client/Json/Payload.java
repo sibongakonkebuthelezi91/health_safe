@@ -24,5 +24,6 @@ public class Payload {
     }
     public static void getpost(@NotNull Context context) {
         context.status(200).result("get Endpoint working");
+//        come add code
     }
 }
