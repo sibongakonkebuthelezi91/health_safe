@@ -4,12 +4,22 @@ import Database.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.HashMap;
+
 public class PatientRepository {
+    private static Transaction transaction = null;
+    private static final HashMap<String, Session> transactionMap = new HashMap<>();
 
     public static void savePatient(PatientTable patientTable) {
-        Transaction transaction = null;
-      try(Session session =  HibernateUtil.getSessionFactory().openSession()){
-          transaction = session.beginTransaction();
+        Session session = null;
+      try{
+          if (!transactionMap.containsKey("Session")){
+              session =  HibernateUtil.getSessionFactory().openSession();
+              transactionMap.put("session", session);
+          }else{
+              session = transactionMap.get("session");
+          }
+              transaction = session.beginTransaction();
           session.persist(patientTable);
 
           transaction.commit();
@@ -20,6 +30,14 @@ public class PatientRepository {
           }
           throw new PatientException("Could not save patient");
       }
+    }
+
+    public static void deletePatient(PatientTable patientTable) {
 
     }
+
+
+    public static void updatePatient(PatientTable patientTable) {}
+
+    public static void getPatient(PatientTable patientTable) {}
 }

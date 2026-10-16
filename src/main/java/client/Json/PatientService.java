@@ -12,7 +12,7 @@ import com.sun.tools.jconsole.JConsoleContext;
 import io.javalin.http.Context;
 import org.jetbrains.annotations.NotNull;
 
-public class Payload {
+public class PatientService {
 
     public static void registerPatient(@NotNull Context context) {
         PatientTable user = context.bodyAsClass(PatientTable.class);
@@ -23,6 +23,8 @@ public class Payload {
             context.status(400);
         }
     }
+
+
 
 
 }
