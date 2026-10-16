@@ -43,7 +43,9 @@ public class PatientRepository {
             session.createQuery(hql, patientTable.getClass())
                     .setParameter("firstname", patientTable.getFirstName())
                     .executeUpdate();
-        }catch(Exception ex){}
+        }catch(Exception ex){
+            System.out.println("Could not delete patient");
+        }
     }
 
 
