@@ -1,5 +1,13 @@
 # HEALTH SAFETY
 
+Health safety is an application that sends patient alerts and doctors can assist
+them through the system. Keeps track of patient temperature and how track record on the
+last message and response.
+
+
+
+
+
 ```mermaid
 sequenceDiagram
     participant W as Wearable Device
@@ -25,4 +33,44 @@ sequenceDiagram
 ```
 
 
-WTC-ML5R2WUG
+ONE TIME PIN: WTC-ML5R2WUG
+
+### Database 
+
+```mermaid
+   erDiagram
+       Patient {
+           ID uuid
+           firstname varchar
+           lastname varchar
+           ThreTemp float
+       }
+       
+       Doctor{
+           id uuid Primary key
+           firstname varchar
+           lastname varchar
+           occupation varchar
+       }
+       
+       
+        alert_doctor{
+            ID int Primary key
+            allocated_doctor_id int fk
+            symptoms varchar
+            temperature float
+            datetime created_at
+        }
+        
+        allocated_doctor{
+            ID int primary key
+            patient_id uuid fk
+            doctor_id uuid fk
+        }
+        
+        Patient }o--|| allocated_doctor : patient doctor
+        Doctor }o--|| allocated_doctor : doctors patient
+        allocated_doctor }o--|| alert_doctor : send message
+        
+```
+
