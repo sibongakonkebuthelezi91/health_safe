@@ -20,6 +20,7 @@ public class PatientApp {
 
 
         clientApi client = new clientApi(patient);
+        System.out.println(client.payload());
         try{
         client.sendPayLoad("http://localhost:8080/registerpatient");
         } catch (IOException e) {

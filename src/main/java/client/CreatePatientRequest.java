@@ -1,7 +1,6 @@
 package client;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 public class CreatePatientRequest {
     private String firstName;
@@ -11,11 +10,11 @@ public class CreatePatientRequest {
 
     public CreatePatientRequest(){}
 
-    public CreatePatientRequest(String firstName, String lastName, LocalDate dob,  Double thretemp) {
+    public CreatePatientRequest(String firstName, String lastName, LocalDate dob,  Double threTemp) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dob = dob;
-        this.threTemp = thretemp;
+        this.threTemp = threTemp;
     }
 
     public String getFirstName() {
@@ -30,7 +29,7 @@ public class CreatePatientRequest {
         return dob.toString();
     }
 
-    public Double getThretemp() {
+    public Double getThreTemp() {
         return threTemp;
     }
 }
