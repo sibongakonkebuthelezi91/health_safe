@@ -14,27 +14,15 @@ import org.jetbrains.annotations.NotNull;
 
 public class Payload {
 
-    public static String createPayload(CreatePatientRequest patient){
-        ObjectMapper payload = new ObjectMapper();
-        try{
-            return payload.writeValueAsString(patient);
-        } catch (JsonProcessingException e) {
-            return "Can not create payload";
-        }
-    }
-
-
     public static void registerPatient(@NotNull Context context) {
         PatientTable user = context.bodyAsClass(PatientTable.class);
         try{
         PatientRepository.savePatient(user);
-        context.status(201).result("Patient registered successfully");
+        context.status(201).json(user);
         }catch (PatientException e){
             context.status(400);
         }
     }
 
-    public static void getPost(@NotNull Context context) {
-        context.status(200).result("get Endpoint working");
-    }
+
 }

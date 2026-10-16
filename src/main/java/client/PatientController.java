@@ -20,7 +20,6 @@ public class PatientController {
 
 
     public void sendPayLoad(Javalin app) {
-
         app.post("/registerPatient", Payload::registerPatient);
 
     }
