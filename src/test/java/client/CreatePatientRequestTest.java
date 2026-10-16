@@ -22,7 +22,7 @@ class CreatePatientRequestTest {
     void getFirstName() {
         CreatePatientRequest createPatientRequest = new CreatePatientRequest("konke",
                 "duma",
-                LocalDate.now());
+                LocalDate.now(), 4.3);
         assertEquals("konke", createPatientRequest.getFirstName());
     }
 
@@ -30,7 +30,7 @@ class CreatePatientRequestTest {
     void getLastName() {
         CreatePatientRequest createPatientRequest = new CreatePatientRequest("konke",
                 "duma",
-                LocalDate.now());
+                LocalDate.now(), 4.3);
         assertEquals("duma", createPatientRequest.getLastName());
     }
 
@@ -38,13 +38,16 @@ class CreatePatientRequestTest {
     void getDob() {
         CreatePatientRequest createPatientRequest = new CreatePatientRequest("konke",
                 "duma",
-                LocalDate.now());
+                LocalDate.now(), 3.4);
         assertEquals(LocalDate.now().toString(), createPatientRequest.getDob());
     }
 
     @Test
     void PojoClass(){
-        CreatePatientRequest createPatientRequest = new CreatePatientRequest("konke", "duma", LocalDate.now());
+        CreatePatientRequest createPatientRequest = new CreatePatientRequest("konke",
+                "duma",
+                LocalDate.now(),
+                4.5);
         String built = payload(createPatientRequest);
 //        checking built is not null
         assertFalse(built.isEmpty());

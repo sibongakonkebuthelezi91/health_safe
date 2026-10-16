@@ -15,7 +15,8 @@ public class PatientApp {
         LocalDate now = LocalDate.of(2020, Month.APRIL, 8);
         CreatePatientRequest patient =  new CreatePatientRequest("konke",
                 "duma",
-                now);
+                now,
+                4.5);
 
 
         clientApi client = new clientApi(patient);

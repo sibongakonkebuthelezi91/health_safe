@@ -22,11 +22,13 @@ public class PatientTable {
     private Double threTemp;
 
     @Column(name = "dob")
-    private LocalDateTime dob;
-    public PatientTable(String firstName, String lastName, Double threTemp) {
+    private String dob;
+
+    public PatientTable(String firstName, String lastName, Double threTemp, String dob) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.threTemp = threTemp;
+        this.dob = dob;
     }
 
     public UUID getId() {
@@ -59,6 +61,14 @@ public class PatientTable {
 
     public void setThreTemp(Double threTemp) {
         this.threTemp = threTemp;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
     public PatientTable() {}

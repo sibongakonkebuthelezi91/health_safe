@@ -7,13 +7,15 @@ public class CreatePatientRequest {
     private String firstName;
     private String lastName;
     private LocalDate dob;
+    private Double threTemp;
 
     public CreatePatientRequest(){}
 
-    public CreatePatientRequest(String firstName, String lastName, LocalDate dob) {
+    public CreatePatientRequest(String firstName, String lastName, LocalDate dob,  Double thretemp) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dob = dob;
+        this.threTemp = thretemp;
     }
 
     public String getFirstName() {
@@ -28,5 +30,7 @@ public class CreatePatientRequest {
         return dob.toString();
     }
 
-
+    public Double getThretemp() {
+        return threTemp;
+    }
 }
