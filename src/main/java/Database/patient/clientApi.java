@@ -6,9 +6,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 
 public class clientApi {
     private HttpClient client = HttpClient.newHttpClient();
@@ -52,9 +54,21 @@ public class clientApi {
     }
 
     public void deleteUser(String name){
-        String url = "http://localhost:8080/users/{" + name + "}";
+        String encodeName = URLEncoder.encode(name, StandardCharsets.UTF_8);
+        String url = "http://localhost:8080/removeuser/" + encodeName;
+        try{
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create())
+                .uri(URI.create(url))
+                .DELETE()
+                .build();
+
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        if(response.statusCode() == 200 || response.statusCode() == 201) System.out.println("Successfully deleted account");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
