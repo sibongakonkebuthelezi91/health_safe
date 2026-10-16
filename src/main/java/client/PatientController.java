@@ -21,13 +21,7 @@ public class PatientController {
 
     public void sendPayLoad(Javalin app) {
 
-//        create posts
-        app.post("/registerPatient", Payload::post);
+        app.post("/registerPatient", Payload::registerPatient);
 
-//        get posts
-        app.get("/posts", Payload::getpost);
-
-//      get individual post
-        app.get("/post", Payload::getpost);
     }
 }
