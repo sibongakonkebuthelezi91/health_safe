@@ -57,10 +57,17 @@
             <artifactId>hibernate-core</artifactId>
             <version>6.4.4.Final</version>
         </dependency>
+
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.7.2</version>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.53.4.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-community-dialects</artifactId>
+            <version>6.4.4.Final</version>
         </dependency>
 
         <!-- JSON Serialization -->
@@ -69,6 +76,7 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.17.0</version>
         </dependency>
+
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
