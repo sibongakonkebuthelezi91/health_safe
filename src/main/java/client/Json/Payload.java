@@ -1,8 +1,12 @@
 package client.Json;
 
+import Database.patient.PatientRepository;
+import Database.patient.PatientTable;
 import client.CreatePatientRequest;
+import client.PatientResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonObject;
 import io.javalin.http.Context;
 import org.jetbrains.annotations.NotNull;
 
@@ -18,9 +22,9 @@ public class Payload {
     }
 
 
-    public static void post(@NotNull Context context) {
-        context.status(201).result("Endpoint working");
-
+    public static void registerPatient(@NotNull Context context) {
+        PatientTable user = context.bodyAsClass(PatientTable.class);
+        pati
     }
     public static void getpost(@NotNull Context context) {
         context.status(200).result("get Endpoint working");
