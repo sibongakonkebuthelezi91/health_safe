@@ -11,7 +11,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class clientApi {
-    private HttpClient client;
+    private HttpClient client = HttpClient.newHttpClient();
     private CreatePatientRequest patientRequest;
 
     public clientApi(CreatePatientRequest patientRequest) {
@@ -32,7 +32,6 @@ public class clientApi {
     }
 
     public void sendPayLoad(String targetUrl) throws IOException, InterruptedException {
-        this.client = HttpClient.newHttpClient();
         String payload = this.payload();
 
 //        Building request to send out
@@ -50,6 +49,12 @@ public class clientApi {
         else {
             System.out.println("Failed to send request to " + targetUrl);
         }
+    }
+
+    public void deleteUser(String name){
+        String url = "http://localhost:8080/users/{" + name + "}";
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create())
     }
 
 }

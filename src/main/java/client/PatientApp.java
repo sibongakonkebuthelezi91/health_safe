@@ -21,13 +21,9 @@ public class PatientApp {
 
         clientApi client = new clientApi(patient);
         System.out.println(client.payload());
-        try{
-        client.sendPayLoad("http://localhost:8080/registerpatient");
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        } catch (InterruptedException e) {
-            System.out.println("Interrupted: " + e.getMessage());
-        }
+        //        client.sendPayLoad("http://localhost:8080/registerpatient");
+        client.deleteUser("konke");
+
 
     }
 }

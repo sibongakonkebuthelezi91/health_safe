@@ -13,5 +13,6 @@ public class PatientController {
 
     public void sendPayLoad(Javalin app) {
         app.post("/registerpatient", PatientService::registerPatient);
+        app.delete("/removeuser/{user}", PatientService::removePatient);
     }
 }

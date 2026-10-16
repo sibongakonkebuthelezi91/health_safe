@@ -25,6 +25,17 @@ public class PatientService {
     }
 
 
+    public static void removePatient(@NotNull Context context){
+        String name = context.pathParam("user");
+        try{
+        PatientRepository.deletePatient(name);
+        context.status(200).json(name);
+        }catch (PatientException e){
+            context.status(400);
+        }
+    }
+
+
 
 
 }

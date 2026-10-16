@@ -13,7 +13,7 @@ public class PatientRepository {
     public static void savePatient(PatientTable patientTable) {
         Session session;
       try{
-          if (!transactionMap.containsKey("Session")){
+          if (!transactionMap.containsKey("session")){
               session =  HibernateUtil.getSessionFactory().openSession();
               transactionMap.put("session", session);
           }else{
@@ -30,20 +30,31 @@ public class PatientRepository {
       }
     }
 
-    public static void deletePatient(PatientTable patientTable) {
+    public static void deletePatient(String name) {
         Session session;
+        boolean startedNewTransaction = false;
         try{
-            if (!transactionMap.containsKey("Session")){
+            if (!transactionMap.containsKey("session")){
                 session =  HibernateUtil.getSessionFactory().openSession();
                 transactionMap.put("session", session);
             }else{
                 session = transactionMap.get("session");
+
             }
-            String hql = "delete from Patient p where p.firstname = :firstname";
-            session.createQuery(hql, patientTable.getClass())
-                    .setParameter("firstname", patientTable.getFirstName())
+//            Checking transaction is active or not begin one when not
+            transaction = session.getTransaction();
+            if (!transaction.isActive()) {
+                transaction = session.beginTransaction();
+                startedNewTransaction = true;}
+
+            String hql = "delete from PatientTable p where p.firstName = :firstname";
+            session.createMutationQuery(hql)
+                    .setParameter("firstname", name)
                     .executeUpdate();
+
+            if(startedNewTransaction) transaction.commit();
         }catch(Exception ex){
+            if(transaction != null && transaction.isActive()) transaction.rollback();
             System.out.println("Could not delete patient");
         }
     }
