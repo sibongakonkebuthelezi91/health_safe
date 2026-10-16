@@ -10,11 +10,9 @@ import io.javalin.Javalin;
 import java.util.HashMap;
 
 public class PatientController {
-    private CreatePatientRequest patientRequest;
     private Javalin server;
 
-    public PatientController(CreatePatientRequest patientRequest, Javalin server) {
-        this.patientRequest = patientRequest;
+    public PatientController(Javalin server) {
         this.server = server;
     }
 

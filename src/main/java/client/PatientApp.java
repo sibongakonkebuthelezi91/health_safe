@@ -17,7 +17,7 @@ public class PatientApp {
                 "duma",
                 now);
 
-        Javalin server = Javalin.create().start(8080);
+
         clientApi client = new clientApi(patient);
         try{
         client.sendPayLoad("http://localhost:8080/registerpatient");
