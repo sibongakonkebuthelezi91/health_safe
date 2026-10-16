@@ -4,13 +4,14 @@ import client.CreatePatientRequest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
 public class clientApi {
     private HttpClient client;
-    private String url;
     private CreatePatientRequest patientRequest;
 
     public clientApi(CreatePatientRequest patientRequest) {
@@ -30,7 +31,7 @@ public class clientApi {
         return client;
     }
 
-    public void sendPayLoad(String targetUrl) {
+    public void sendPayLoad(String targetUrl) throws IOException, InterruptedException {
         this.client = HttpClient.newHttpClient();
         String payload = this.payload();
 
@@ -41,8 +42,14 @@ public class clientApi {
                 .header("Accept", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(payload))
                 .build();
-
-
+        HttpResponse<String> response = this.client.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.statusCode());
+        if (response.statusCode() == 200 || response.statusCode() == 201) {
+            System.out.println("Successfully sent request to " + targetUrl);
+        }
+        else {
+            System.out.println("Failed to send request to " + targetUrl);
+        }
     }
 
 }

@@ -1,7 +1,9 @@
 package client;
 
 import io.javalin.Javalin;
+import Database.patient.clientApi;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.UUID;
@@ -16,8 +18,14 @@ public class PatientApp {
                 now);
 
         Javalin server = Javalin.create().start(8080);
-        PatientController controller = new PatientController(patient, server);
-        controller.sendPayLoad(server);
+        clientApi client = new clientApi(patient);
+        try{
+        client.sendPayLoad("http://localhost:8080/registerpatient");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } catch (InterruptedException e) {
+            System.out.println("Interrupted: " + e.getMessage());
+        }
 
     }
 }
