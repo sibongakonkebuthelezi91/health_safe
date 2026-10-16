@@ -7,15 +7,13 @@ public class CreatePatientRequest {
     private String firstName;
     private String lastName;
     private LocalDate dob;
-    private UUID doctorId;
 
     public CreatePatientRequest(){}
 
-    public CreatePatientRequest(String firstName, String lastName, LocalDate dob, UUID doctorId) {
+    public CreatePatientRequest(String firstName, String lastName, LocalDate dob) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dob = dob;
-        this.doctorId = doctorId;
     }
 
     public String getFirstName() {
@@ -30,10 +28,6 @@ public class CreatePatientRequest {
         return dob.toString();
     }
 
-    public UUID getDoctorId() {
-        return doctorId;
-    }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -46,7 +40,4 @@ public class CreatePatientRequest {
         this.dob = dob;
     }
 
-    public void setDoctorId(UUID doctorId) {
-        this.doctorId = doctorId;
-    }
 }
