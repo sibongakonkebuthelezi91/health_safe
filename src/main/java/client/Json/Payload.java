@@ -24,7 +24,9 @@ public class Payload {
 
     public static void registerPatient(@NotNull Context context) {
         PatientTable user = context.bodyAsClass(PatientTable.class);
-        pati
+
+        PatientRepository.savePatient(user);
+
     }
     public static void getpost(@NotNull Context context) {
         context.status(200).result("get Endpoint working");

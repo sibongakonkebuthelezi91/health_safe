@@ -6,7 +6,7 @@ import org.hibernate.Transaction;
 
 public class PatientRepository {
 
-    public void savePatient(PatientTable patientTable) {
+    public static void savePatient(PatientTable patientTable) {
         Transaction transaction = null;
       try(Session session =  HibernateUtil.getSessionFactory().openSession()){
           transaction = session.beginTransaction();
@@ -15,10 +15,10 @@ public class PatientRepository {
           transaction.commit();
 
       }catch(Exception ex){
-          System.out.println(ex.getMessage());
           if(transaction != null && transaction.isActive()){
               transaction.rollback();
           }
+          throw new PatientException("Could not save patient");
       }
 
     }
