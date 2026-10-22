@@ -14,13 +14,9 @@ public class Repository {
 
     public static void savePatient(PatientTable patientTable) {
       try{
-          if (!transactionMap.containsKey("session")){
-              session =  HibernateUtil.getSessionFactory().openSession();
-              transactionMap.put("session", session);
-          }else{
-              session = transactionMap.get("session");
-          }
-              transaction = session.beginTransaction();
+          if(!isActivated()) {
+              session = startSession();
+              transaction = session.beginTransaction();}
           session.persist(patientTable);
           transaction.commit();
       }catch(Exception ex){
@@ -77,6 +73,6 @@ public class Repository {
     }
 
     private static boolean isActivated(){
-        return session.isConnected();
+        return transaction.isActive();
     }
 }
