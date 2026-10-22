@@ -1,7 +1,6 @@
 package Database.user;
 
 import Database.util.HibernateUtil;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.NoResultException;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -17,7 +16,7 @@ public class Repository {
 
     public static void savePatient(Patient patient) {
       try{
-          if(transaction == null && !isActivated()) {
+          if(transaction == null && !isSessionActive()) {
               session = startSession();
               transaction = session.beginTransaction();}
           session.persist(patient);
@@ -62,10 +61,10 @@ public class Repository {
 
     public static void updatePatient(Patient patient) {}
 
-    public static void getPatient(String name) {
+    public static Patient getPatient(String name) {
 //        Check if I have transaction
         try{
-        if( isActivated()) {
+        if(isSessionActive()) {
             transaction = session.getTransaction();
         }else {
             session = startSession();
@@ -73,10 +72,10 @@ public class Repository {
         }
         String hql = "FROM Patient p WHERE p.firstName = :firstName";
         Query<Patient> query = session.createQuery(hql).setParameter("firstName", name);
-        Patient patient = query.getSingleResultOrNull();
-            System.out.println(patient.getFirstName());
+            return query.getSingleResultOrNull();
         }catch (HibernateException | NoResultException ex){
             rollback();
+            return null;
         }
     }
 
@@ -89,8 +88,8 @@ public class Repository {
             return session;
     }
 
-    private static boolean isActivated(){
-        return session != null || session.isOpen();
+    private static boolean isSessionActive(){
+        return session != null && session.isOpen();
     }
 
     private static void rollback(){
