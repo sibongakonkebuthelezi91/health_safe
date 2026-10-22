@@ -12,9 +12,13 @@ public class Controller {
 
 
     public void readRequest() {
+//        Routes for patient users
         app.post("/registerpatient", Service::registerPatient);
         app.delete("/removeuser/{user}", Service::removePatient);
         app.patch("/edituser", Service::updatePatient);
-        app.get("/getuser", Service::registerDoctor);
+        app.get("/getuser", Service::getUser);
+
+//        Routes for doctors
+
     }
 }
