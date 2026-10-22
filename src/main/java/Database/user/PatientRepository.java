@@ -1,6 +1,7 @@
 package Database.user;
 
 import Database.util.HibernateUtil;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -9,9 +10,9 @@ import java.util.HashMap;
 public class PatientRepository {
     private static Transaction transaction = null;
     private static final HashMap<String, Session> transactionMap = new HashMap<>();
+    private static  Session session;
 
     public static void savePatient(PatientTable patientTable) {
-        Session session;
       try{
           if (!transactionMap.containsKey("session")){
               session =  HibernateUtil.getSessionFactory().openSession();
@@ -62,5 +63,20 @@ public class PatientRepository {
 
     public static void updatePatient(PatientTable patientTable) {}
 
-    public static void getPatient(PatientTable patientTable) {}
+    public static void getPatient(PatientTable patientTable) {
+
+    }
+
+    private static Session getSession() {
+        return session;
+    }
+
+    private static Session startSession() throws HibernateException {
+            session = HibernateUtil.getSessionFactory().openSession();
+            return session;
+    }
+
+    private static boolean isActivated(){
+        return session.isConnected();
+    }
 }
