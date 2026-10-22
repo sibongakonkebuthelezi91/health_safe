@@ -1,4 +1,4 @@
-package Database.patient;
+package Database.user;
 
 import Database.util.HibernateUtil;
 import org.hibernate.Session;

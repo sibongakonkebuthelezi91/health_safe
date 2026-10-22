@@ -1,4 +1,4 @@
-package Database.patient;
+package Database.user;
 
 import client.CreatePatientRequest;
 import com.fasterxml.jackson.core.JsonProcessingException;

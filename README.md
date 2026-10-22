@@ -50,7 +50,7 @@ ONE TIME PIN: WTC-ML5R2WUG
            id uuid Primary key
            firstname varchar
            lastname varchar
-           occupation varchar
+           department varchar
        }
        
        

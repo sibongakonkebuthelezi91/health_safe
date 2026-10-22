@@ -20,6 +20,6 @@
         <property name="hibernate.format_sql">true</property>
 
         <!-- Mapped Entity Classes -->
-        <mapping class="Database.patient.PatientTable"/>
+        <mapping class="Database.user.PatientTable"/>
     </session-factory>
 </hibernate-configuration>

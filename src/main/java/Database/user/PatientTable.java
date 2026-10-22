@@ -1,8 +1,7 @@
-package Database.patient;
+package Database.user;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
