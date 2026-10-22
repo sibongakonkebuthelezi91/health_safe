@@ -4,6 +4,7 @@ import Database.util.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.HashMap;
 
@@ -59,7 +60,7 @@ public class Repository {
 
     public static void updatePatient(PatientTable patientTable) {}
 
-    public static void getPatient(PatientTable patientTable) {
+    public static void getPatient(String name) {
 //        Check if I have transaction
         try{
         if(isActivated()) {
@@ -68,6 +69,9 @@ public class Repository {
             session = startSession();
             transaction = session.beginTransaction();
         }
+        String hql = "FROM PatientTable p WHERE p.firstName =  :firstName";
+        Query query = session.createQuery(hql).setParameter("firstName", name);
+
         }catch (HibernateException ex){
             if(transaction != null && isActivated()) transaction.rollback();
         }
