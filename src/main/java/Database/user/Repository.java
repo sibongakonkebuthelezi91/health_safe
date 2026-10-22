@@ -7,7 +7,7 @@ import org.hibernate.Transaction;
 
 import java.util.HashMap;
 
-public class PatientRepository {
+public class Repository {
     private static Transaction transaction = null;
     private static final HashMap<String, Session> transactionMap = new HashMap<>();
     private static  Session session;

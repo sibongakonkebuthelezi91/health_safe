@@ -1,7 +1,7 @@
 package client.Json;
 
 import Database.user.PatientException;
-import Database.user.PatientRepository;
+import Database.user.Repository;
 import Database.user.PatientTable;
 import io.javalin.http.Context;
 import org.jetbrains.annotations.NotNull;
@@ -11,7 +11,7 @@ public class Service {
     public static void registerPatient(@NotNull Context ctx) {
         PatientTable user = ctx.bodyAsClass(PatientTable.class);
         try{
-        PatientRepository.savePatient(user);
+        Repository.savePatient(user);
         ctx.status(201).json(user);
         }catch (PatientException e){
             ctx.status(400);
@@ -21,7 +21,7 @@ public class Service {
     public static void removePatient(@NotNull Context context){
         String name = context.pathParam("user");
         try{
-        PatientRepository.deletePatient(name);
+        Repository.deletePatient(name);
         context.status(200).json(name);
         }catch (PatientException e){
             context.status(400);
