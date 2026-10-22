@@ -2,14 +2,14 @@ package client.Json;
 
 import Database.user.PatientException;
 import Database.user.Repository;
-import Database.user.PatientTable;
+import Database.user.Patient;
 import io.javalin.http.Context;
 import org.jetbrains.annotations.NotNull;
 
 public class Service {
 
     public static void registerPatient(@NotNull Context ctx) {
-        PatientTable user = ctx.bodyAsClass(PatientTable.class);
+        Patient user = ctx.bodyAsClass(Patient.class);
         try{
         Repository.savePatient(user);
         ctx.status(201).json(user);

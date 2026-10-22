@@ -1,6 +1,8 @@
 package Database.user;
 
 import Database.util.HibernateUtil;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.NoResultException;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -13,12 +15,12 @@ public class Repository {
     private static final HashMap<String, Session> transactionMap = new HashMap<>();
     private static  Session session;
 
-    public static void savePatient(PatientTable patientTable) {
+    public static void savePatient(Patient patient) {
       try{
-          if(!isActivated()) {
+          if(transaction == null && !isActivated()) {
               session = startSession();
               transaction = session.beginTransaction();}
-          session.persist(patientTable);
+          session.persist(patient);
           transaction.commit();
       }catch(Exception ex){
           if(transaction != null && transaction.isActive()){
@@ -45,7 +47,7 @@ public class Repository {
                 transaction = session.beginTransaction();
                 startedNewTransaction = true;}
 
-            String hql = "delete from PatientTable p where p.firstName = :firstname";
+            String hql = "delete from Patient p where p.firstName = :firstname";
             session.createMutationQuery(hql)
                     .setParameter("firstname", name)
                     .executeUpdate();
@@ -58,22 +60,23 @@ public class Repository {
     }
 
 
-    public static void updatePatient(PatientTable patientTable) {}
+    public static void updatePatient(Patient patient) {}
 
     public static void getPatient(String name) {
 //        Check if I have transaction
         try{
-        if(isActivated()) {
+        if(transaction != null && isActivated()) {
             transaction = session.getTransaction();
         }else {
             session = startSession();
             transaction = session.beginTransaction();
         }
-        String hql = "FROM PatientTable p WHERE p.firstName =  :firstName";
-        Query query = session.createQuery(hql).setParameter("firstName", name);
-
-        }catch (HibernateException ex){
-            if(transaction != null && isActivated()) transaction.rollback();
+        String hql = "FROM Patient p WHERE p.firstName = :firstName";
+        Query<Patient> query = session.createQuery(hql).setParameter("firstName", name);
+        Patient patient = query.getSingleResultOrNull();
+            System.out.println(patient.getFirstName());
+        }catch (HibernateException | NoResultException ex){
+            rollback();
         }
     }
 
@@ -87,6 +90,11 @@ public class Repository {
     }
 
     private static boolean isActivated(){
+        if(transaction == null) return false;
         return transaction.isActive();
+    }
+
+    private static void rollback(){
+        if(transaction != null && transaction.isActive()) transaction.rollback();
     }
 }

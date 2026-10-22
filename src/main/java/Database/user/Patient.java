@@ -4,9 +4,9 @@ import jakarta.persistence.*;
 
 import java.util.UUID;
 
-@Entity
-@Table(name = "patient")
-public class PatientTable {
+@Entity(name = "Patient")
+@Table(name = "Patient")
+public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -23,7 +23,7 @@ public class PatientTable {
     @Column(name = "dob")
     private String dob;
 
-    public PatientTable(String firstName, String lastName, Double threTemp, String dob) {
+    public Patient(String firstName, String lastName, Double threTemp, String dob) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.threTemp = threTemp;
@@ -70,6 +70,6 @@ public class PatientTable {
         this.dob = dob;
     }
 
-    public PatientTable() {}
+    public Patient() {}
 
 }
