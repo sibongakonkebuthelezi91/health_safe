@@ -15,6 +15,6 @@ public class Controller {
         app.post("/registerpatient", Service::registerPatient);
         app.delete("/removeuser/{user}", Service::removePatient);
         app.patch("/edituser", Service::updatePatient);
-//        app.get("/getuser", )
+        app.get("/getuser", Service::registerDoctor);
     }
 }

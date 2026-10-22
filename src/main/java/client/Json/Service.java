@@ -18,7 +18,6 @@ public class Service {
         }
     }
 
-
     public static void removePatient(@NotNull Context context){
         String name = context.pathParam("user");
         try{
@@ -29,6 +28,7 @@ public class Service {
         }
     }
 
+    public static void getUser(@NotNull Context context){}
     public static void updatePatient(@NotNull Context context){}
     public static void registerDoctor(@NotNull Context ctx) {}
 
