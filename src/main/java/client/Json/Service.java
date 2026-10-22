@@ -6,7 +6,7 @@ import Database.user.PatientTable;
 import io.javalin.http.Context;
 import org.jetbrains.annotations.NotNull;
 
-public class PatientService {
+public class Service {
 
     public static void registerPatient(@NotNull Context ctx) {
         PatientTable user = ctx.bodyAsClass(PatientTable.class);
@@ -29,7 +29,7 @@ public class PatientService {
         }
     }
 
-
-
+    public static void updatePatient(@NotNull Context context){}
+    public static void registerDoctor(@NotNull Context ctx) {}
 
 }

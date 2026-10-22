@@ -1,6 +1,6 @@
 package client;
 
-import client.Json.PatientService;
+import client.Json.Service;
 import io.javalin.Javalin;
 
 public class PatientController {
@@ -12,7 +12,8 @@ public class PatientController {
 
 
     public void sendPayLoad() {
-        app.post("/registerpatient", PatientService::registerPatient);
-        app.delete("/removeuser/{user}", PatientService::removePatient);
+        app.post("/registerpatient", Service::registerPatient);
+        app.delete("/removeuser/{user}", Service::removePatient);
+//        app.get("/getuser", )
     }
 }
