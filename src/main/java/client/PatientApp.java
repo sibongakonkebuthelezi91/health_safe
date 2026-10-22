@@ -17,7 +17,7 @@ public class PatientApp {
 
         clientApi client = new clientApi(patient);
         System.out.println(client.payload());
-        //        client.sendPayLoad("http://localhost:8080/registerpatient");
+        //        client.readRequest("http://localhost:8080/registerpatient");
         client.deleteUser("konke");
 
 

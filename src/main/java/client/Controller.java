@@ -3,17 +3,18 @@ package client;
 import client.Json.Service;
 import io.javalin.Javalin;
 
-public class PatientController {
+public class Controller {
     private Javalin app;
 
-    public PatientController(Javalin app) {
+    public Controller(Javalin app) {
         this.app = app;
     }
 
 
-    public void sendPayLoad() {
+    public void readRequest() {
         app.post("/registerpatient", Service::registerPatient);
         app.delete("/removeuser/{user}", Service::removePatient);
+        app.patch("/edituser", Service::updatePatient);
 //        app.get("/getuser", )
     }
 }
