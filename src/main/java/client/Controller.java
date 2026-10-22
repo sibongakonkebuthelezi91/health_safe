@@ -16,7 +16,7 @@ public class Controller {
         app.post("/registerpatient", Service::registerPatient);
         app.delete("/removeuser/{user}", Service::removePatient);
         app.patch("/edituser", Service::updatePatient);
-        app.get("/getuser", Service::getUser);
+        app.get("/getuser/{user}", Service::getUser);
 
 //        Routes for doctors
 
