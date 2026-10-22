@@ -60,7 +60,17 @@ public class Repository {
     public static void updatePatient(PatientTable patientTable) {}
 
     public static void getPatient(PatientTable patientTable) {
-
+//        Check if I have transaction
+        try{
+        if(isActivated()) {
+            transaction = session.getTransaction();
+        }else {
+            session = startSession();
+            transaction = session.beginTransaction();
+        }
+        }catch (HibernateException ex){
+            if(transaction != null && isActivated()) transaction.rollback();
+        }
     }
 
     private static Session getSession() {
