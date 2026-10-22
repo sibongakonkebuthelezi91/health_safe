@@ -65,7 +65,7 @@ public class Repository {
     public static void getPatient(String name) {
 //        Check if I have transaction
         try{
-        if(transaction != null && isActivated()) {
+        if( isActivated()) {
             transaction = session.getTransaction();
         }else {
             session = startSession();
@@ -85,13 +85,12 @@ public class Repository {
     }
 
     private static Session startSession() throws HibernateException {
-            session = HibernateUtil.getSessionFactory().openSession();
+        if(session == null || !session.isOpen()) { session = HibernateUtil.getSessionFactory().openSession();}
             return session;
     }
 
     private static boolean isActivated(){
-        if(transaction == null) return false;
-        return transaction.isActive();
+        return session != null || session.isOpen();
     }
 
     private static void rollback(){
