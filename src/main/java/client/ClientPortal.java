@@ -36,7 +36,7 @@ public class ClientPortal {
             if (name.length() < 3 ) {
                 System.out.println("Invalid name length\n");
                 continue;
-            } else if (!name.matches("[a-zA-Z]")) {
+            } else if (name.matches("[a-zA-Z]")) {
                 System.out.println("Invalid name format\n");
                 continue;
             }

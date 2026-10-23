@@ -10,7 +10,7 @@ public class UserApp {
         String portal = choices(scanner);
 
         if (portal.trim().equals("1")) {
-            new ClientPortal(new PatientResponse());
+            new ClientPortal(new PatientResponse()).createPatient(scanner);
         }
     }
 
@@ -18,8 +18,8 @@ public class UserApp {
         String choice;
         while (true) {
             System.out.println("Choose your choice : ");
-            System.out.println("[1] Doctor");
-            System.out.println("[2] Patient");
+            System.out.println("[1] Patient");
+            System.out.println("[2] Doctor");
             System.out.print("choice: ");
             choice = input.nextLine();
             if (choice.equals("1") || choice.equals("2")) {
