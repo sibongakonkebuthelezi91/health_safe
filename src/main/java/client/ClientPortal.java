@@ -14,7 +14,7 @@ public class ClientPortal {
 
     public boolean Authenticate(String name){
         PatientResponse getUser = new clientApi().getUser(name);
-        if(getUser.){
+        if(getUser == null){
             System.out.println("No user was found");
             return false;
         }
