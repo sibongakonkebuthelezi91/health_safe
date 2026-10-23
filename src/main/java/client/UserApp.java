@@ -21,7 +21,7 @@ public class UserApp {
             if (choice.equals("1") || choice.equals("2")) {
                 break;
             }
-            input.nextLine();
+            System.out.println("Invalid choice");
         }
         return choice;
     }
