@@ -11,6 +11,7 @@ public class ClientPortal {
     }
 
     public boolean Authenticate(String name){
+
         if(name.isEmpty()){
             System.out.println("Please enter your name");
             return false;

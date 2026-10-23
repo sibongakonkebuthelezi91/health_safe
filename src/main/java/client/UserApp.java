@@ -8,7 +8,10 @@ public class UserApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String portal = choices(scanner);
-        System.out.println(portal);
+
+        if (portal.trim().equals("1")) {
+            new ClientPortal(new PatientResponse());
+        }
     }
 
     private static String choices(Scanner input) {
@@ -17,11 +20,12 @@ public class UserApp {
             System.out.println("Choose your choice : ");
             System.out.println("[1] Doctor");
             System.out.println("[2] Patient");
+            System.out.print("choice: ");
             choice = input.nextLine();
             if (choice.equals("1") || choice.equals("2")) {
                 break;
             }
-            System.out.println("Invalid choice");
+            System.out.println("Invalid choice\n");
         }
         return choice;
     }
