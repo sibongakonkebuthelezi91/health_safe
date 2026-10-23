@@ -70,8 +70,7 @@ public class ClientPortal {
             double temperature;
             while (true) {
                 try{
-                System.out.print("Please enter your date of birth: ");
-                System.out.println("e.g. yyyy-mm-dd");
+                System.out.print("enter your average temperature: ");
                 temperature = scanner.nextDouble();
                 if (temperature< 0) {
                     System.out.println("Invalid temperature \n");
@@ -79,6 +78,7 @@ public class ClientPortal {
                 }
                 }catch(InputMismatchException e){
                     System.out.println("Invalid temperature\n");
+                    scanner.next();
                     continue;
                 }
                 break;
