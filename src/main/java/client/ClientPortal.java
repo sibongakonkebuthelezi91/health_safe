@@ -18,6 +18,30 @@ public class ClientPortal {
             System.out.println("No user was found");
             return false;
         }
-        return userInfo.getFirstName().equals(name.toLowerCase());
+        return userInfo.getFirstName().equalsIgnoreCase(name);
+    }
+
+    public CreatePatientRequest createPatient(Scanner input){
+        String firstName, lastName, dob, threTemp;
+        firstName = name();
+        System.out.println(firstName);
+        return null;
+    }
+
+    private String name(){
+        String name;
+        while (true) {
+            System.out.print("Please enter your name: ");
+            name = scanner.nextLine();
+            if (name.length() < 3 ) {
+                System.out.println("Invalid name length\n");
+                continue;
+            } else if (!name.matches("[a-zA-Z]")) {
+                System.out.println("Invalid name format\n");
+                continue;
+            }
+            break;
+        }
+        return name;
     }
 }
