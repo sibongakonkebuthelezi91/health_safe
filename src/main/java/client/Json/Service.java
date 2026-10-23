@@ -1,6 +1,6 @@
 package client.Json;
 
-import Database.user.PatientException;
+import Database.user.UserException;
 import Database.user.Repository;
 import Database.user.Patient;
 import io.javalin.http.Context;
@@ -13,7 +13,7 @@ public class Service {
         try{
         Repository.savePatient(user);
         ctx.status(201).json(user);
-        }catch (PatientException e){
+        }catch (UserException e){
             ctx.status(400);
         }
     }
@@ -23,7 +23,7 @@ public class Service {
         try{
         Repository.deletePatient(name);
         context.status(200).json(name);
-        }catch (PatientException e){
+        }catch (UserException e){
             context.status(400);
         }
     }
@@ -37,7 +37,7 @@ public class Service {
         }else {
             context.status(200).json(user);
         }
-        }catch (PatientException e){
+        }catch (UserException e){
             context.status(400);
         }
     }

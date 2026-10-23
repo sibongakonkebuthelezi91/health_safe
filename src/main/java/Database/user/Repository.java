@@ -25,7 +25,7 @@ public class Repository {
           if(transaction != null && transaction.isActive()){
               transaction.rollback();
           }
-          throw new PatientException("Could not save patient");
+          throw new UserException("Could not save patient");
       }
     }
 
