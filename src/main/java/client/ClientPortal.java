@@ -2,6 +2,7 @@ package client;
 
 import Server.api.clientApi;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -24,15 +25,18 @@ public class ClientPortal {
     }
 
     public boolean createPatient(Scanner input){
-        String firstName, lastName, dob;
-        double threshTemp;
-        firstName = names();
-        lastName = names();
-        dob = dob();
-        threshTemp = averageTemperature();
+        String firstName = names();
+        String lastName = names();
+        String dob = dob();
+        double threshTemp = averageTemperature();
         CreatePatientRequest createPatient = new CreatePatientRequest(firstName,lastName, dob,threshTemp);
         clientApi create =  new clientApi(createPatient);
+        try{
         create.createUser();
+        } catch (IOException | InterruptedException e) {
+            System.out.println("Error creating account check your network");
+            return false;
+        }
         return true;
     }
 
@@ -62,8 +66,7 @@ public class ClientPortal {
             dob = scanner.nextLine();
             if (dob.length() < 10 || !dob.matches(dateFormat)) {
                 System.out.println("Invalid date format\n");
-                continue;
-            }
+                continue;}
             break;
             }
         return dob;

@@ -37,12 +37,12 @@ public class clientApi {
         return client;
     }
 
-    public void createUser(String targetUrl) throws IOException, InterruptedException {
+    public void createUser() throws IOException, InterruptedException {
         String payload = this.payload();
-        String url = "http://localhost:8080/";
+        String url = "http://localhost:8080/createuser";
 //        Building request to send out
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(targetUrl))
+                .uri(URI.create(url))
                 .header("content-type", "application/json")
                 .header("Accept", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(payload))
@@ -50,9 +50,9 @@ public class clientApi {
         HttpResponse<String> response = this.client.send(request, HttpResponse.BodyHandlers.ofString());
         System.out.println(response.statusCode());
         if (response.statusCode() == 200 || response.statusCode() == 201) {
-            System.out.println("Successfully sent request to " + targetUrl);
+            System.out.println("Account created successfully ");
         } else {
-            System.out.println("Failed to send request to " + targetUrl);
+            System.out.println("Failed to create account");
         }
     }
 

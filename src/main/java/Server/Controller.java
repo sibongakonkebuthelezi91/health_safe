@@ -13,7 +13,7 @@ public class Controller {
 
     public void readRequest() {
 //        Routes for patient users
-        app.post("/registerpatient", Service::registerPatient);
+        app.post("/createuser", Service::registerPatient);
         app.delete("/removeuser/{user}", Service::removePatient);
         app.patch("/edituser", Service::updatePatient);
         app.get("/getuser/{user}", Service::getUser);
