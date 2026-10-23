@@ -3,6 +3,7 @@ package client;
 import Server.api.clientApi;
 
 import java.time.LocalDate;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ClientPortal {
@@ -23,7 +24,8 @@ public class ClientPortal {
     }
 
     public CreatePatientRequest createPatient(Scanner input){
-        String firstName, lastName, dob, threTemp;
+        String firstName, lastName, dob;
+        double threshTemp;
         firstName = names();
         lastName = names();
         dob = dob();
@@ -63,6 +65,27 @@ public class ClientPortal {
             }
         return dob;
         }
+
+        public double averageTemperature(){
+            double temperature;
+            while (true) {
+                try{
+                System.out.print("Please enter your date of birth: ");
+                System.out.println("e.g. yyyy-mm-dd");
+                temperature = scanner.nextDouble();
+                if (temperature< 0) {
+                    System.out.println("Invalid temperature \n");
+                    continue;
+                }
+                }catch(InputMismatchException e){
+                    System.out.println("Invalid temperature\n");
+                    continue;
+                }
+                break;
+            }
+            return temperature;
+        }
+
     }
 
 
