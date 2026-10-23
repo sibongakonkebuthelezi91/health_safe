@@ -48,7 +48,7 @@ public class ClientPortal {
         return name;
     }
 
-    public String dob(){
+    private String dob(){
         String dateFormat = "\\d{4}-\\d{2}-\\d{2}";
         String dob;
         while (true) {

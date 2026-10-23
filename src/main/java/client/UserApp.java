@@ -10,7 +10,7 @@ public class UserApp {
         String portal = choices(scanner);
 
         if (portal.trim().equals("1")) {
-            new ClientPortal(new PatientResponse()).dob();
+            new ClientPortal(new PatientResponse());
         }
     }
 
