@@ -3,7 +3,6 @@ package client;
 import Server.api.clientApi;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -24,7 +23,7 @@ public class ClientPortal {
         return userInfo.getFirstName().equalsIgnoreCase(name);
     }
 
-    public boolean createPatient(Scanner input){
+    public boolean createPatient(){
         String firstName = names();
         String lastName = names();
         String dob = dob();
