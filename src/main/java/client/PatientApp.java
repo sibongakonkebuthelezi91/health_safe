@@ -1,6 +1,6 @@
 package client;
 
-import Database.user.clientApi;
+import Server.api.clientApi;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -9,7 +9,7 @@ public class PatientApp {
 
     public static void main(String[] args) {
         LocalDate now = LocalDate.of(2020, Month.APRIL, 8);
-        CreatePatientRequest patient =  new CreatePatientRequest("konke",
+        CreatePatientRequest patient =  new CreatePatientRequest("cosmo",
                 "duma",
                 now,
                 4.5);
@@ -17,9 +17,10 @@ public class PatientApp {
 
         clientApi client = new clientApi(patient);
         System.out.println(client.payload());
-        //        client.readRequest("http://localhost:8080/registerpatient");
-        client.deleteUser("konke");
-
+//        System.out.println(client.pa);
+//        client.deleteUser("konke");
+        PatientResponse user = client.getUser("konke");
+        System.out.println(user.getFirstName());
 
     }
 }

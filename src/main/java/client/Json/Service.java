@@ -31,8 +31,14 @@ public class Service {
     public static void getUser(@NotNull Context context){
         String name = context.pathParam("user");
         Patient user = Repository.getPatient(name);
+        try{
         if(user == null){
             context.status(404).json("User not found");
+        }else {
+            context.status(200).json(user);
+        }
+        }catch (PatientException e){
+            context.status(400);
         }
     }
     public static void updatePatient(@NotNull Context context){}

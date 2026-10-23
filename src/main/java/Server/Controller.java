@@ -1,4 +1,4 @@
-package client;
+package Server;
 
 import client.Json.Service;
 import io.javalin.Javalin;
