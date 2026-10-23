@@ -14,7 +14,8 @@ public class ClientPortal {
         this.userInfo = userInfo;
     }
 
-    public boolean Authenticate(String name){
+    public boolean Authenticate(){
+        String name = names();
         PatientResponse getUser = new clientApi().getUser(name);
         if(getUser == null){
             System.out.println("No user was found");
@@ -91,6 +92,25 @@ public class ClientPortal {
             return temperature;
         }
 
+        public void runClientPortal(){
+            String auth = loginOrCreate();
+        }
+
+        public String loginOrCreate(){
+            String choice;
+            while (true) {
+                System.out.println("Choose your choice : ");
+                System.out.println("[1] Login");
+                System.out.println("[2] create");
+                System.out.print("choice: ");
+                choice = scanner.nextLine();
+                if (choice.equals("1") || choice.equals("2")) {
+                    break;
+                }
+                System.out.println("Invalid choice\n");
+            }
+            return choice;
+        }
     }
 
 
