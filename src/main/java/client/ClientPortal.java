@@ -1,5 +1,7 @@
 package client;
 
+import Server.api.clientApi;
+
 import java.util.Scanner;
 
 public class ClientPortal {
@@ -11,9 +13,9 @@ public class ClientPortal {
     }
 
     public boolean Authenticate(String name){
-
-        if(name.isEmpty()){
-            System.out.println("Please enter your name");
+        PatientResponse getUser = new clientApi().getUser(name);
+        if(getUser.){
+            System.out.println("No user was found");
             return false;
         }
         return userInfo.getFirstName().equals(name.toLowerCase());

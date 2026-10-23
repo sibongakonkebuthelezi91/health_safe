@@ -22,6 +22,8 @@ public class clientApi {
         this.patientRequest = patientRequest;
     }
 
+    public clientApi() {}
+
     public String payload() {
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -35,7 +37,7 @@ public class clientApi {
         return client;
     }
 
-    public void sendPayLoad(String targetUrl) throws IOException, InterruptedException {
+    public void createUser(String targetUrl) throws IOException, InterruptedException {
         String payload = this.payload();
 
 //        Building request to send out
