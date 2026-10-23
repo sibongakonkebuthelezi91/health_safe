@@ -5,12 +5,12 @@ import java.time.LocalDate;
 public class CreatePatientRequest {
     private String firstName;
     private String lastName;
-    private LocalDate dob;
+    private String dob;
     private Double threTemp;
 
     public CreatePatientRequest(){}
 
-    public CreatePatientRequest(String firstName, String lastName, LocalDate dob,  Double threTemp) {
+    public CreatePatientRequest(String firstName, String lastName, String dob,  Double threTemp) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dob = dob;
@@ -26,7 +26,7 @@ public class CreatePatientRequest {
     }
 
     public String getDob() {
-        return dob.toString();
+        return dob;
     }
 
     public Double getThreTemp() {

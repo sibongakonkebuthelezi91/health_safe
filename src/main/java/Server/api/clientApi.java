@@ -39,7 +39,7 @@ public class clientApi {
 
     public void createUser(String targetUrl) throws IOException, InterruptedException {
         String payload = this.payload();
-
+        String url = "http://localhost:8080/";
 //        Building request to send out
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(targetUrl))

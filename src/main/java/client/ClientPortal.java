@@ -23,14 +23,17 @@ public class ClientPortal {
         return userInfo.getFirstName().equalsIgnoreCase(name);
     }
 
-    public CreatePatientRequest createPatient(Scanner input){
+    public boolean createPatient(Scanner input){
         String firstName, lastName, dob;
         double threshTemp;
         firstName = names();
         lastName = names();
         dob = dob();
-
-        return null;
+        threshTemp = averageTemperature();
+        CreatePatientRequest createPatient = new CreatePatientRequest(firstName,lastName, dob,threshTemp);
+        clientApi create =  new clientApi(createPatient);
+        create.createUser();
+        return true;
     }
 
     private String names(){
