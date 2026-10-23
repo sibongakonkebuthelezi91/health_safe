@@ -2,6 +2,7 @@ package client;
 
 import Server.api.clientApi;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class ClientPortal {
@@ -23,25 +24,45 @@ public class ClientPortal {
 
     public CreatePatientRequest createPatient(Scanner input){
         String firstName, lastName, dob, threTemp;
-        firstName = name();
-        System.out.println(firstName);
+        firstName = names();
+        lastName = names();
+        dob = dob();
+
         return null;
     }
 
-    private String name(){
+    private String names(){
         String name;
         while (true) {
-            System.out.print("Please enter your name: ");
+            System.out.print("Please enter your name or surname: ");
             name = scanner.nextLine();
             if (name.length() < 3 ) {
-                System.out.println("Invalid name length\n");
+                System.out.println("Invalid names length\n");
                 continue;
             } else if (!name.matches("[a-zA-Z]+")) {
-                System.out.println("Invalid name format\n");
+                System.out.println("Invalid names format\n");
                 continue;
             }
             break;
         }
         return name;
     }
-}
+
+    public String dob(){
+        String dateFormat = "\\d{4}-\\d{2}-\\d{2}";
+        String dob;
+        while (true) {
+            System.out.print("Please enter your date of birth: ");
+            System.out.println("e.g. yyyy-mm-dd");
+            dob = scanner.nextLine();
+            if (dob.length() < 10 || !dob.matches(dateFormat)) {
+                System.out.println("Invalid date format\n");
+                continue;
+            }
+            break;
+            }
+        return dob;
+        }
+    }
+
+
