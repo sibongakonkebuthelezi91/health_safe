@@ -14,7 +14,7 @@ public class ClientPortal {
         this.userInfo = userInfo;
     }
 
-    public boolean Authenticate(){
+    public boolean authenticate(){
         String name = names();
         PatientResponse getUser = new clientApi().getUser(name);
         if(getUser == null){
@@ -93,7 +93,14 @@ public class ClientPortal {
         }
 
         public void runClientPortal(){
-            String auth = loginOrCreate();
+            boolean sessionActive = false;
+            do {
+                String auth = loginOrCreate();
+                if (auth.equals("1")) {
+                    sessionActive = authenticate();
+                }
+            }while(!sessionActive);
+
         }
 
         public String loginOrCreate(){
