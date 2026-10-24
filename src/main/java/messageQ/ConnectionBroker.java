@@ -2,7 +2,7 @@ package messageQ;
 import jakarta.jms.Connection;
 import jakarta.jms.ConnectionFactory;
 import org.apache.activemq.ActiveMQConnectionFactory;
-public class ConnectionBroker {
+public class ConnectionBroker implements AutoCloseable{
 
     private Connection connect ;
     private ConnectionFactory manager;
@@ -17,4 +17,8 @@ public class ConnectionBroker {
         this.manager = new ActiveMQConnectionFactory(url);
     }
 
+    @Override
+    public void close() throws Exception {
+
+    }
 }
