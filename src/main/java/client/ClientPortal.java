@@ -93,14 +93,51 @@ public class ClientPortal {
         }
 
         public void runClientPortal(){
-            boolean sessionActive = false;
-            do {
-                String auth = loginOrCreate();
-                if (auth.equals("1")) {
-                    sessionActive = authenticate();
+            while (true) {
+                String choice = loginOrCreate();
+                if (choice.equals("2")) {
+                    createPatient();
+                    scanner.nextLine();
+                    continue;
                 }
-            }while(!sessionActive);
 
+                System.out.print("Please enter your name or surname: ");
+                PatientResponse patient = new clientApi().getUser(scanner.nextLine());
+                if (patient == null) {
+                    System.out.println("No user was found");
+                    continue;
+                }
+                userInfo = patient;
+                break;
+            }
+
+            while (true) {
+                System.out.println("\nClient portal");
+                System.out.println("[1] View message approvals");
+                System.out.println("[2] Send an alert message");
+                System.out.println("[3] Log out");
+                System.out.print("choice: ");
+                String choice = scanner.nextLine().trim();
+
+                switch (choice) {
+                    case "1":
+                        System.out.println("Message approvals are not available yet.");
+                        break;
+                    case "2":
+                        System.out.print("Enter your alert message: ");
+                        String message = scanner.nextLine().trim();
+                        if (message.isEmpty()) {
+                            System.out.println("Alert message cannot be empty.");
+                        } else {
+                            System.out.println("Alert message sending is not available yet; message was not sent.");
+                        }
+                        break;
+                    case "3":
+                        return;
+                    default:
+                        System.out.println("Invalid choice\n");
+                }
+            }
         }
 
         public String loginOrCreate(){
@@ -119,5 +156,3 @@ public class ClientPortal {
             return choice;
         }
     }
-
-

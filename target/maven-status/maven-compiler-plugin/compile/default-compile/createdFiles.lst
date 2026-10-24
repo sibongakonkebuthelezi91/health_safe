@@ -1,11 +1,5 @@
 JavalinApp.class
-Database/patient/PatientTable.class
 Database/tableApp.class
 CakesController.class
-Database/patient/PatientRepository.class
-client/PatientService.class
-Database/patient/clientApi.class
-client/Json/Payload.class
 Database/util/HibernateUtil.class
 client/PatientInfo.class
-Database/patient/PatientException.class
