@@ -44,12 +44,12 @@ public class ConnectionBroker implements AutoCloseable{
     @Override
     public void close() throws Exception {
         if(this.connect != null) {
-            try{
+            try {
                 connect.close();
             } catch (JMSException e) {
                 throw new RuntimeException("Can not close session ");
-            }finally {
-                this.connect = null;
+            } finally {
+                connect = null;
             }
         }
     }

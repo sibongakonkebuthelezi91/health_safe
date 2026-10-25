@@ -19,10 +19,11 @@ public class TelemetryProducer {
             try(MessageProducer producer = session.createProducer(path)){
                 TextMessage message = session.createTextMessage(rawJson);
                 producer.send(message);
+                return "Message sent to doctor";
             }
         } catch (JMSException e) {
-            throw new RuntimeException(e);
+            System.out.println("Could not send message check internet connection");
+            return null;
         }
-        return "";
     }
 }
