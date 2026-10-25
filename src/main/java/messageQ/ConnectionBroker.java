@@ -48,6 +48,8 @@ public class ConnectionBroker implements AutoCloseable{
                 connect.close();
             } catch (JMSException e) {
                 throw new RuntimeException("Can not close session ");
+            }finally {
+                this.connect = null;
             }
         }
     }
