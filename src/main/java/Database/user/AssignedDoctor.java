@@ -17,7 +17,9 @@ public class AssignedDoctor {
     private Patient patientId;
 
 
-    private UUID doctorId;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "doctor_id", referencedColumnName = "id")
+    private Doctor doctorId;
 
 
     public Long getId() {
