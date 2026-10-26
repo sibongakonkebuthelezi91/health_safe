@@ -2,6 +2,8 @@ package Database.user;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -25,7 +27,6 @@ public class Doctor {
 
     @Column
     private String department;
-
 
     public Doctor() {}
 

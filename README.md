@@ -39,7 +39,12 @@ ONE TIME PIN: WTC-ML5R2WUG
 
 ```mermaid
    erDiagram
-       Patient {
+
+    Patient }o--|| allocated_doctor : patient doctor
+    Doctor }o--|| allocated_doctor : doctors patient
+    allocated_doctor}o--|| alert_doctor : send message
+
+    Patient {
            ID uuid
            firstname varchar
            lastname varchar
@@ -67,10 +72,6 @@ ONE TIME PIN: WTC-ML5R2WUG
             patient_id uuid fk
             doctor_id uuid fk
         }
-        
-        Patient }o--|| allocated_doctor : patient doctor
-        Doctor }o--|| allocated_doctor : doctors patient
-        allocated_doctor }o--|| alert_doctor : send message
         
 ```
 

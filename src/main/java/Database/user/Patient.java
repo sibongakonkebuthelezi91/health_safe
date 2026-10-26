@@ -9,15 +9,16 @@ import java.util.UUID;
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id", nullable = false, unique = true)
     private UUID id;
 
-    @Column(name = "first_name")
+    @Column(name = "firstname", nullable = false)
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "lastname", nullable = false)
     private String lastName;
 
-    @Column(name = "thresh_temperature")
+    @Column(name = "thretemp", nullable = false)
     private Double threTemp;
 
     @Column(name = "dob")
