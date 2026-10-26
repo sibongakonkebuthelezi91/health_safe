@@ -8,9 +8,7 @@ public class TelemetryConsumer implements MessageListener {
     private ConnectionBroker broker;
     private String queueName;
     private double feverThreshold;
-
-
-
+    private TelementryData message;
 
     @Override
     public void onMessage(Message message) {
