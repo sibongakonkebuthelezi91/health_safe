@@ -11,6 +11,7 @@ public class alertDoctor {
     private int id;
 
 //    @ManyToOne(fetch = FetchType.LAZY)
+
     public void setId(int id) {
         this.id = id;
     }
